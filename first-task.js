@@ -4,7 +4,7 @@ function tasker(arg) {
   if (arg !== '4') {
     data = [...data, arg]
   }
-  console.log(data);
+  console.log(data.sort());
 }
 
 const func1 = (func) => {
