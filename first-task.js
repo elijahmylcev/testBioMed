@@ -1,10 +1,25 @@
 let data = [];
+let result = '';
 
 function tasker(arg) {
   if (arg !== '4') {
     data = [...data, arg]
   }
-  console.log(data.sort());
+  data.sort()
+  // while (data.length !== 0) {
+  //   let i = '';
+  // }
+
+  if (data.length == 6) {
+    while (result.length !== data.length) {
+      result += data.find(element => !isNaN(element))
+      result += data.find(element => isNaN(element))
+    }
+  }
+
+
+  
+  console.log(data,result);
 }
 
 const func1 = (func) => {
