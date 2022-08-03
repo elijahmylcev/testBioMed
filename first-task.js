@@ -12,8 +12,12 @@ function tasker(arg) {
 
   if (data.length == 6) {
     while (result.length !== data.length) {
-      result += data.find(element => !isNaN(element))
-      result += data.find(element => isNaN(element))
+      let searchNumber = data.find(element => !isNaN(element))
+      let searchLetter = data.find(element => isNaN(element))
+      console.log(searchNumber, searchLetter);
+      data.splice(data.indexOf(searchNumber), 1)
+      data.splice(data.indexOf(searchLetter), 1)
+      result += searchNumber + searchLetter
     }
   }
 
