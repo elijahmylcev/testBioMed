@@ -1,29 +1,26 @@
 let data = [];
 let result = '';
 
-function tasker(arg) {
+function sorter(arg) {
   if (arg !== '4') {
     data = [...data, arg]
   }
+
   data.sort()
-  // while (data.length !== 0) {
-  //   let i = '';
-  // }
 
   if (data.length == 6) {
-    while (result.length !== data.length) {
+    while (data.length) {
       let searchNumber = data.find(element => !isNaN(element))
       let searchLetter = data.find(element => isNaN(element))
-      console.log(searchNumber, searchLetter);
-      data.splice(data.indexOf(searchNumber), 1)
-      data.splice(data.indexOf(searchLetter), 1)
-      result += searchNumber + searchLetter
+      data.splice(data.indexOf(searchNumber), 1);
+      data.splice(data.indexOf(searchLetter), 1);
+      result += ' ' + searchNumber + ' '  + searchLetter;
     }
   }
 
-
-  
-  console.log(data,result);
+  if (!data.length) {
+    console.log(result);
+  }
 }
 
 const func1 = (func) => {
@@ -39,5 +36,5 @@ const func2 = (func) => {
   setTimeout(func, 7000, "a");
 }
 
-func1(tasker);
-func2(tasker);
+func1(sorter);
+func2(sorter);
