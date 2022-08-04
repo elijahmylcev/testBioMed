@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-function AddTodoItem({ props }) {
+function AddTodoItem({ AddItemInCollection }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
-  function Add(e, tit, descr) {
+  function Add(e, inputTitle, inputDescription) {
     e.preventDefault();
-
-    console.log(tit, descr);
+    console.log(inputTitle, inputDescription);
+    AddItemInCollection(inputTitle, inputDescription);
     setTitle('');
     setDescription('');
   }
