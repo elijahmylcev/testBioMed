@@ -30,13 +30,19 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>TODO List</h1>
-        <h2>
-          У вас
-          {' '}
-          {todoCollection.length}
-          {' '}
-          задач(и)
-        </h2>
+
+        {(todoCollection.length === 0)
+          ? <h2>У вас нет тасков, но вы можете добавить их в форме ниже</h2>
+          : (
+            <h2>
+              У вас
+              {' '}
+              {todoCollection.length}
+              {' '}
+              задач(и)
+            </h2>
+          )}
+
         <AddTodoItem AddItemInCollection={AddItemInCollection} />
         <TodoList
           todoCollection={todoCollection}
