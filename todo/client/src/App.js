@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AddTodoItem from './components/AddTodoItem/AddTodoItem';
 import TodoList from './components/TodoList';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>TODO List</h1>
+        <AddTodoItem />
         <TodoList todoCollection={todoCollection} />
       </header>
     </div>
