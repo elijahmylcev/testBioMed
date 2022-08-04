@@ -1,7 +1,7 @@
 import './TodoList.scss';
 import deleteIcon from './delete.png';
 
-function TodoList({ todoCollection }) {
+function TodoList({ todoCollection, deleteItem }) {
   return (
     <div className="todoList">
       {todoCollection.map((todoItem) => (
@@ -10,7 +10,13 @@ function TodoList({ todoCollection }) {
             {todoItem.title}
             <div className="todoList__item_description">{todoItem.description}</div>
           </div>
-          <img className="todoList__item_delete" src={deleteIcon} alt="delete" />
+          <img
+            className="todoList__item_delete"
+            src={deleteIcon}
+            alt="delete"
+            onClick={() => deleteItem(todoItem.id)}
+            aria-hidden="true"
+          />
         </div>
       )) }
     </div>

@@ -22,6 +22,10 @@ function App() {
     });
   }
 
+  function deleteItem(id) {
+    setTodoCollection((prevState) => prevState.filter((element) => element.id !== id));
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -34,7 +38,10 @@ function App() {
           задач(и)
         </h2>
         <AddTodoItem AddItemInCollection={AddItemInCollection} />
-        <TodoList todoCollection={todoCollection} />
+        <TodoList
+          todoCollection={todoCollection}
+          deleteItem={deleteItem}
+        />
       </header>
     </div>
   );
