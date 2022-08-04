@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './AddTodoItem.scss';
 
 function AddTodoItem({ AddItemInCollection }) {
   const [title, setTitle] = useState('');
@@ -6,10 +7,11 @@ function AddTodoItem({ AddItemInCollection }) {
 
   function Add(e, inputTitle, inputDescription) {
     e.preventDefault();
-    console.log(inputTitle, inputDescription);
-    AddItemInCollection(inputTitle, inputDescription);
-    setTitle('');
-    setDescription('');
+    if (inputTitle || inputDescription) {
+      AddItemInCollection(inputTitle, inputDescription);
+      setTitle('');
+      setDescription('');
+    }
   }
 
   return (
