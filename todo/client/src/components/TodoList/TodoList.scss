@@ -11,10 +11,13 @@
     padding: 10px;
     border: 1px solid green;
     width: 100%;
-    &_delete {
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
+    &_icons {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      img {
+       cursor: pointer;
+      }
     }
   }
 
