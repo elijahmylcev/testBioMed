@@ -48,6 +48,7 @@
           "no-plusplus": "off",
           "react/prop-types": "off",
           "radix": "off",
-          "react/jsx-no-bind": "off"
+          "react/jsx-no-bind": "off",
+          "react/button-has-type": 0
   }
 }

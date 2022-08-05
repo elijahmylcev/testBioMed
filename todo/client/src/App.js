@@ -9,17 +9,10 @@ function App() {
     { id: 2, title: 'Complete Tasks', description: 'Description Lorem ' },
   ]);
 
-  function AddItemInCollection(title, description) {
-    setTodoCollection((prevState) => {
-      const newItem = {
-        id: Date.now(),
-        title,
-        description,
-      };
-      return [
-        ...prevState, newItem,
-      ];
-    });
+  function AddItemInCollection(newItem) {
+    setTodoCollection((prevState) => ([
+      ...prevState, newItem,
+    ]));
   }
 
   function deleteItem(id) {

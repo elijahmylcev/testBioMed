@@ -1,14 +1,23 @@
 import { useState } from 'react';
+import MyButton from '../../UIComponents/MyButton/MyButton';
+import MyInput from '../../UIComponents/MyInput/MyInput';
 import './AddTodoItem.scss';
 
 function AddTodoItem({ AddItemInCollection }) {
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState('gdfgdfg');
   const [description, setDescription] = useState('');
 
-  function Add(e, inputTitle, inputDescription) {
+  function addNewTask(e) {
     e.preventDefault();
-    if (inputTitle || inputDescription) {
-      AddItemInCollection(inputTitle, inputDescription);
+    console.log('hello');
+    if (title !== '') {
+      const newItem = {
+        id: Date.now(),
+        title,
+        description,
+      };
+      console.log(newItem);
+      AddItemInCollection(newItem);
       setTitle('');
       setDescription('');
     }
@@ -16,27 +25,26 @@ function AddTodoItem({ AddItemInCollection }) {
 
   return (
     <form action="submit">
-      <input
+      <MyInput
         type="text"
         name="title"
         placeholder="Название задачи"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      <input
+      <MyInput
         type="text"
         name="description"
         placeholder="Описание"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-
       />
-      <button
+      <MyButton
         type="submit"
-        onClick={(e) => Add(e, title, description)}
+        onClick={addNewTask}
       >
         Добавить
-      </button>
+      </MyButton>
     </form>
   );
 }
