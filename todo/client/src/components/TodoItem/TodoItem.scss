@@ -2,9 +2,21 @@
   &__item {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     padding: 10px;
     border: 1px solid green;
     width: 100%;
+    &_title {
+      max-width: 70%;
+      font-size: 16px;
+      word-wrap: break-word;
+      font-weight: bold;
+    }
+    &_description {
+      margin-top: 10px;
+      font-weight: normal;
+      font-size: 14px;
+    }
     &_icons {
       display: flex;
       gap: 15px;

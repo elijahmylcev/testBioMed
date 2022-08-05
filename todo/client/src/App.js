@@ -19,6 +19,20 @@ function App() {
     setTodoCollection((prevState) => prevState.filter((element) => element.id !== id));
   }
 
+  function changeTodoItem(item) {
+    const updatedCollection = todoCollection.map((element) => {
+      if (element.id === item.id) {
+        return {
+          id: item.id,
+          title: item.title,
+          description: item.description,
+        };
+      }
+      return element;
+    });
+    setTodoCollection(updatedCollection);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -40,6 +54,7 @@ function App() {
         <TodoList
           todoCollection={todoCollection}
           deleteItem={deleteItem}
+          changeTodoItem={changeTodoItem}
         />
       </header>
     </div>

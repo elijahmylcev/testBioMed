@@ -1,16 +1,7 @@
 import TodoItem from '../TodoItem/TodoItem';
 import './TodoList.scss';
 
-// {edit ?
-//   <div className="todoList__item_title">
-//   <MyInput value={todoItem.title} />
-//   <MyInput value={todoItem.description} />
-//   <MyButton>Изменить</MyButton>
-//   </div>
-//   :
-// }
-
-function TodoList({ todoCollection, deleteItem }) {
+function TodoList({ todoCollection, deleteItem, changeTodoItem }) {
   return (
     <div className="todoList">
       {todoCollection.map((todoItem) => (
@@ -20,6 +11,7 @@ function TodoList({ todoCollection, deleteItem }) {
           description={todoItem.description}
           deleteItem={deleteItem}
           key={todoItem.id}
+          changeTodoItem={changeTodoItem}
         />
       )) }
     </div>
