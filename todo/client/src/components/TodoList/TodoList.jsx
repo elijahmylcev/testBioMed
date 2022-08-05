@@ -1,34 +1,26 @@
+import TodoItem from '../TodoItem/TodoItem';
 import './TodoList.scss';
-import deleteIcon from '../../icons/delete.png';
-import editIcon from '../../icons/edit.png';
+
+// {edit ?
+//   <div className="todoList__item_title">
+//   <MyInput value={todoItem.title} />
+//   <MyInput value={todoItem.description} />
+//   <MyButton>Изменить</MyButton>
+//   </div>
+//   :
+// }
 
 function TodoList({ todoCollection, deleteItem }) {
   return (
     <div className="todoList">
       {todoCollection.map((todoItem) => (
-        <div className="todoList__item" key={todoItem.id}>
-          <div className="todoList__item_title">
-            {todoItem.title}
-            <div className="todoList__item_description">{todoItem.description}</div>
-          </div>
-          <div className="todoList__item_icons">
-            <img
-              className="todoList__item_delete"
-              src={editIcon}
-              alt="edit"
-            // onClick={() => edit(todoItem.id)}
-              aria-hidden="true"
-            />
-            <img
-              className="todoList__item_delete"
-              src={deleteIcon}
-              alt="delete"
-              onClick={() => deleteItem(todoItem.id)}
-              aria-hidden="true"
-            />
-
-          </div>
-        </div>
+        <TodoItem
+          id={todoItem.id}
+          title={todoItem.title}
+          description={todoItem.description}
+          deleteItem={deleteItem}
+          key={todoItem.id}
+        />
       )) }
     </div>
   );

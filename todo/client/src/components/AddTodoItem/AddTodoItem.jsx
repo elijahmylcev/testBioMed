@@ -4,12 +4,11 @@ import MyInput from '../../UIComponents/MyInput/MyInput';
 import './AddTodoItem.scss';
 
 function AddTodoItem({ AddItemInCollection }) {
-  const [title, setTitle] = useState('gdfgdfg');
+  const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
   function addNewTask(e) {
     e.preventDefault();
-    console.log('hello');
     if (title !== '') {
       const newItem = {
         id: Date.now(),
