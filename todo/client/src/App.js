@@ -1,13 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useQuery } from '@apollo/client';
+import GET_ALL_TODOITEMS from './query/todoItem';
+
 import AddTodoItem from './components/AddTodoItem/AddTodoItem';
 import TodoList from './components/TodoList/TodoList';
 import './App.scss';
 
 function App() {
-  const [todoCollection, setTodoCollection] = useState([
-    { id: 1, title: 'Learn JavaScript', description: 'Description Lorem ' },
-    { id: 2, title: 'Complete Tasks', description: 'Description Lorem ' },
-  ]);
+  const { data, loading } = useQuery(GET_ALL_TODOITEMS);
+
+  const [todoCollection, setTodoCollection] = useState([]);
+
+  useEffect(() => {
+    if (!loading) {
+      setTodoCollection(data.getAllTodoItems);
+    }
+  }, [data]);
 
   function AddItemInCollection(newItem) {
     setTodoCollection((prevState) => ([

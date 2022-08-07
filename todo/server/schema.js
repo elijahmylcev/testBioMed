@@ -19,11 +19,16 @@ const schema = buildSchema(
     input TodoItemInput {
       id: ID
       title: String!
-      description: String!
+      description: String
     }
 
     type Query {
       getAllTodoItems: [TodoItem]
+    }
+
+    type Mutation {
+      createTodoItem(input: TodoItemInput): TodoItem!
+      deleteTodoItem(id: ID!): TodoItem!
     }
   `
 )

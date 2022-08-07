@@ -1,5 +1,7 @@
-import './TodoItem.scss';
 import { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { DELETE_TODOITEM } from '../../mutations/todoitem';
+import './TodoItem.scss';
 import MyInput from '../../UIComponents/MyInput/MyInput';
 import MyButton from '../../UIComponents/MyButton/MyButton';
 import deleteIcon from '../../icons/delete.png';
@@ -11,6 +13,20 @@ function TodoItem({
   const [edit, setEdit] = useState(false);
   const [stateTitle, setStateTitle] = useState(title);
   const [stateDescription, setStateDescription] = useState(description);
+  const [deleteTodoItem] = useMutation(DELETE_TODOITEM);
+
+  const deleteItemTodo = (i) => {
+    deleteTodoItem({
+      variables: {
+        id: i,
+      },
+    }).then(
+      ({ data }) => {
+        console.log(data);
+        deleteItem(i);
+      },
+    );
+  };
 
   function changeItem() {
     const changedItem = {
@@ -41,7 +57,7 @@ function TodoItem({
               className="todoList__item_delete"
               src={deleteIcon}
               alt="delete"
-              onClick={() => deleteItem(id)}
+              onClick={() => deleteItemTodo(id)}
               aria-hidden="true"
             />
 

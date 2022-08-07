@@ -1,26 +1,38 @@
 import { useState } from 'react';
+import { useMutation } from '@apollo/client';
+
 import MyButton from '../../UIComponents/MyButton/MyButton';
 import MyInput from '../../UIComponents/MyInput/MyInput';
 import './AddTodoItem.scss';
+import CREATE_TODOITEM from '../../mutations/todoitem';
 
 function AddTodoItem({ AddItemInCollection }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [newTodoItem] = useMutation(CREATE_TODOITEM);
 
-  function addNewTask(e) {
-    e.preventDefault();
+  const createTodoItem = (e) => {
     if (title !== '') {
+      e.preventDefault();
       const newItem = {
         id: Date.now(),
         title,
         description,
       };
-      console.log(newItem);
-      AddItemInCollection(newItem);
-      setTitle('');
-      setDescription('');
+      newTodoItem({
+        variables: {
+          input: {
+            title, description,
+          },
+        },
+      }).then(({ data }) => {
+        console.log(data);
+        setTitle('');
+        setDescription('');
+        AddItemInCollection(newItem);
+      });
     }
-  }
+  };
 
   return (
     <form action="submit">
@@ -40,7 +52,7 @@ function AddTodoItem({ AddItemInCollection }) {
       />
       <MyButton
         type="submit"
-        onClick={addNewTask}
+        onClick={(e) => createTodoItem(e)}
       >
         Добавить
       </MyButton>
