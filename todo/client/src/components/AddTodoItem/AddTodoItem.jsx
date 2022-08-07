@@ -15,7 +15,6 @@ function AddTodoItem({ AddItemInCollection }) {
     if (title !== '') {
       e.preventDefault();
       const newItem = {
-        id: Date.now(),
         title,
         description,
       };
@@ -26,7 +25,8 @@ function AddTodoItem({ AddItemInCollection }) {
           },
         },
       }).then(({ data }) => {
-        console.log(data);
+        // console.log(data.createTodoItem.id);
+        newItem.id = data.createTodoItem.id;
         setTitle('');
         setDescription('');
         AddItemInCollection(newItem);

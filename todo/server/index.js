@@ -7,6 +7,8 @@ const todoItems = [
 { id: 2, title: 'Complete Tasks', description: 'Description Lorem ' }
 ]
 
+let id = 2;
+
 const app = express();
 app.use(cors());
 
@@ -16,21 +18,22 @@ const root = {
   },
   createTodoItem: ({input}) => {
     const todoItem = {
-      id: Date.now(), ...input
+      id: id + 1, ...input
     }
 
     todoItems.push(todoItem)
     return todoItem
   },
-  deleteTodoItem: (id) => {
-    return id
-    // const todoIndex = todoItems.findIndex(item => item.id == id);
+  deleteTodoItem: ({id}) => {
+    const todoIndex = todoItems.findIndex(item => item.id === id);
 
-    //   if (todoIndex === -1) throw new Error("Todo not found");
+      if (todoIndex === -1) throw new Error("Todo not found");
 
-    //   const deletedTodo = todoItems.splice(todoIndex, 1);
 
-    //   return deletedItem[0];
+      // const deletedItems = todoItems.splice(todoIndex, 1);
+
+      const [deleted] = todoItems.splice(todoIndex, 1);
+      return deleted;
   }
 }
 

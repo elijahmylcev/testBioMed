@@ -3,7 +3,7 @@ const { buildSchema } = require("graphql");
 const schema = buildSchema(
   `
     type TodoItem {
-      id: ID
+      id: Int
       title: String
       description: String
     }
@@ -17,7 +17,6 @@ const schema = buildSchema(
     }
 
     input TodoItemInput {
-      id: ID
       title: String!
       description: String
     }
@@ -28,7 +27,8 @@ const schema = buildSchema(
 
     type Mutation {
       createTodoItem(input: TodoItemInput): TodoItem!
-      deleteTodoItem(id: ID!): TodoItem!
+      deleteTodoItem(id: Int!): TodoItem!
+      updateTodoItem(id: Int!, title: String!, description: String): TodoItem!
     }
   `
 )

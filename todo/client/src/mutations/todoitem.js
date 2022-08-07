@@ -9,9 +9,9 @@ const CREATE_TODOITEM = gql`
 `;
 
 export const DELETE_TODOITEM = gql`
-  mutation deleteTodoItem($id: ID) {
+  mutation deleteTodoItem($id: Int!) {
     deleteTodoItem(id: $id) {
-      todoItem
+      id
     }
   }
 `;

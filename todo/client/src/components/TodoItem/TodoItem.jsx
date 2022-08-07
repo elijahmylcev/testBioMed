@@ -18,7 +18,7 @@ function TodoItem({
   const deleteItemTodo = (i) => {
     deleteTodoItem({
       variables: {
-        id: i,
+        id: +i,
       },
     }).then(
       ({ data }) => {
