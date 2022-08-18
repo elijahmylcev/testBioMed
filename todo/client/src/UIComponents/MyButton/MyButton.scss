@@ -1,0 +1,12 @@
+button {
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 1px solid green; 
+  color: green; 
+  cursor: pointer;
+  transition: all .3s ease-in;
+  &:hover {
+    background-color: green;
+    color: rgb(26, 26, 26);
+  }
+}
